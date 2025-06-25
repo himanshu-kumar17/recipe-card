@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Responsive Recipe Cards</title>
+  <style>
+    /* Reset & Basic Styles */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: #f8f8f8;
+      color: #333;
+      padding: 20px;
+    }
+    header {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+    h1 {
+      font-size: 2.5rem;
+      color: #ff7043;
+    }
+
+    /* Container Layout */
+    .recipe-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
+    }
+
+    /* Recipe Card Styles */
+    .recipe-card {
+      background: white;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      transition: transform 0.2s ease, background 0.2s ease;
+    }
+    .recipe-card:hover {
+      transform: scale(1.02);
+      background: #fffdf5;
+    }
+    .recipe-card img {
+      width: 100%;
+      height: auto;
+      border-radius: 6px;
+      margin-bottom: 15px;
+    }
+    .description {
+      margin: 10px 0;
+      font-style: italic;
+    }
+    .instructions {
+      margin-top: 10px;
+    }
+    .ingredients {
+      margin-top: 10px;
+      padding-left: 20px;
+    }
+
+    .toggle-btn {
+      margin-top: 10px;
+      padding: 8px 12px;
+      background: #ff7043;
+      color: white;
+      border: none;
+      cursor: pointer;
+      border-radius: 4px;
+    }
+    .toggle-btn:hover {
+      background: #e65100;
+    }
+
+    .hidden {
+      display: none;
+    }
+
+    /* Responsive Layout */
+    @media (max-width: 768px) {
+      .recipe-container {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>Delicious Recipes</h1>
+  </header>
+
+  <main class="recipe-container">
+    <!-- Recipe Card 1 -->
+    <div class="recipe-card">
+      <img src="https://via.placeholder.com/400x200.png?text=Spaghetti+Carbonara" alt="Spaghetti Carbonara" />
+      <h2>Spaghetti Carbonara</h2>
+      <p class="description">Classic Italian pasta with creamy egg sauce and pancetta.</p>
+      <button class="toggle-btn">Show Ingredients</button>
+      <ul class="ingredients hidden">
+        <li>Spaghetti</li>
+        <li>Eggs</li>
+        <li>Pancetta</li>
+        <li>Parmesan Cheese</li>
+        <li>Black Pepper</li>
+      </ul>
+      <p class="instructions">Cook pasta, mix with eggs and cheese, add pancetta, stir quickly. Serve hot.</p>
+    </div>
+
+    <!-- Recipe Card 2 -->
+    <div class="recipe-card">
+      <img src="https://via.placeholder.com/400x200.png?text=Chicken+Tikka+Masala" alt="Chicken Tikka Masala" />
+      <h2>Chicken Tikka Masala</h2>
+      <p class="description">Spicy grilled chicken in creamy tomato curry sauce.</p>
+      <button class="toggle-btn">Show Ingredients</button>
+      <ul class="ingredients hidden">
+        <li>Chicken</li>
+        <li>Yogurt</li>
+        <li>Garam Masala</li>
+        <li>Tomatoes</li>
+        <li>Heavy Cream</li>
+      </ul>
+      <p class="instructions">Grill marinated chicken, prepare curry sauce, mix and simmer. Serve with rice.</p>
+    </div>
+
+    <!-- Recipe Card 3 -->
+    <div class="recipe-card">
+      <img src="https://via.placeholder.com/400x200.png?text=Veggie+Tacos" alt="Veggie Tacos" />
+      <h2>Veggie Tacos</h2>
+      <p class="description">Colorful and healthy tacos packed with fresh vegetables.</p>
+      <button class="toggle-btn">Show Ingredients</button>
+      <ul class="ingredients hidden">
+        <li>Tortillas</li>
+        <li>Bell Peppers</li>
+        <li>Black Beans</li>
+        <li>Corn</li>
+        <li>Avocado</li>
+      </ul>
+      <p class="instructions">Sauté veggies, heat tortillas, fill and top with avocado. Serve with lime.</p>
+    </div>
+  </main>
+
+  <script>
+    // Toggle Ingredients Visibility
+    const buttons = document.querySelectorAll('.toggle-btn');
+
+    buttons.forEach(btn => {
+      btn.addEventListener('click', () => {
+        const list = btn.nextElementSibling;
+        list.classList.toggle('hidden');
+        btn.textContent = list.classList.contains('hidden') ? 'Show Ingredients' : 'Hide Ingredients';
+      });
+    });
+  </script>
+</body>
+</html>
